@@ -21,7 +21,6 @@ class MainActivity : AppCompatActivity() {
         println("notes app")
         println("notes app")
         println("notes app")
-        println("notes app")
 
     }
 }
