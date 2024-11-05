@@ -51,4 +51,9 @@ dependencies {
 
     implementation(libs.androidx.navigation.fragment)
     implementation(libs.androidx.navigation.ui)
+
+
+    implementation (libs.sdp.android)
+    implementation (libs.ssp.android)
+
 }
