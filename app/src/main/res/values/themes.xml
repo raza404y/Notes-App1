@@ -3,7 +3,16 @@
     <style name="Base.Theme.NotesApp" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        
+        <item name="floatingActionButtonSmallStyle">@style/ActionFloatingButtonStyle</item>
     </style>
 
+    <style name="ActionFloatingButtonStyle" parent="Widget.Design.FloatingActionButton">
+        <item name="shapeAppearanceOverlay">@style/circle</item>
+    </style>
     <style name="Theme.NotesApp" parent="Base.Theme.NotesApp" />
+    
+    <style name="circle" parent="ShapeAppearance.Material3.Corner.Small">
+        <item name="cornerSize">50%</item>
+    </style>
 </resources>

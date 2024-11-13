@@ -2,4 +2,11 @@
     <string name="app_name">Notes App</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="search_for_notes">Search for notes</string>
+    <string name="todo">TODO</string>
+    <string name="wed">Wed</string>
+    <string name="_24">24</string>
+    <string name="oct">Oct</string>
+    <string name="all">All</string>
+    <string name="detail">1. Review of Previous\n   Action Items\n2. Product Development\n   Update\n3. User Feedback and\n   Customer Insights\n4. Competitive Analysis\n5. Roadmap Discussion</string>
 </resources>

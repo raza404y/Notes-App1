@@ -13,10 +13,18 @@
         <action
             android:id="@+id/action_homeFragment_to_addNoteFragment"
             app:destination="@id/addNoteFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_likeFragment"
+            app:destination="@id/likeFragment" />
     </fragment>
     <fragment
         android:id="@+id/addNoteFragment"
         android:name="com.blinklab.notesapp.fragments.AddNoteFragment"
         android:label="fragment_add_note"
         tools:layout="@layout/fragment_add_note" />
+    <fragment
+        android:id="@+id/likeFragment"
+        android:name="com.blinklab.notesapp.fragments.LikeFragment"
+        android:label="fragment_like"
+        tools:layout="@layout/fragment_like" />
 </navigation>
