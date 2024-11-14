@@ -12,8 +12,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.blinklab.notesapp.R
 import com.blinklab.notesapp.models.DetailDataclass
 
-class DetailAdapter(private val context: Context, private val array: ArrayList<DetailDataclass>) :
-    RecyclerView.Adapter<DetailAdapter.MYViewHolder>() {
+class NotesAdapter(private val context: Context, private val array: ArrayList<DetailDataclass>) :
+    RecyclerView.Adapter<NotesAdapter.MYViewHolder>() {
 
     val colorsList = arrayListOf("#D9E8FC", "#FFD8F4", "#FDE99D", "#B0E9CA", "#FFEADD", "#FCFAD9")
 
@@ -23,7 +23,7 @@ class DetailAdapter(private val context: Context, private val array: ArrayList<D
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MYViewHolder {
         val view =
-            LayoutInflater.from(parent.context).inflate(R.layout.detail_designfile, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.notes_design, parent, false)
         return MYViewHolder(view)
     }
 
@@ -38,7 +38,7 @@ class DetailAdapter(private val context: Context, private val array: ArrayList<D
         val drawable =
             ContextCompat.getDrawable(context, R.drawable.detail_back) as GradientDrawable
         drawable.setColor(Color.parseColor(colorsList[position % colorsList.size]))
-        holder.noteText.background = drawable
+        holder.itemView.background = drawable
 
 
     }

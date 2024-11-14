@@ -1,14 +1,210 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.AddNoteFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <ImageView
+        android:id="@+id/back_arrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_18sdp"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/grey" />
 
-</FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@+id/back_arrow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/back_arrow">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginVertical="@dimen/_10sdp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/clipboard"
+            app:tint="@color/grey" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginVertical="@dimen/_10sdp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/heart" />
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginVertical="@dimen/_10sdp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/file"
+            app:tint="@color/grey" />
+
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/back_arrow" />
+
+    <EditText
+        android:id="@+id/title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:autofillHints=""
+        android:background="@android:color/transparent"
+        android:gravity="start"
+        android:hint="@string/title"
+        android:imeOptions="actionNext"
+        android:inputType="text"
+        android:maxLength="100"
+        android:maxLines="2"
+        android:padding="@dimen/_12sdp"
+        android:textSize="@dimen/_25sdp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider" />
+
+
+    <jp.wasabeef.richeditor.RichEditor
+        android:id="@+id/richEditor"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title" />
+
+    <!--next editor ko set krna backend sy abi krna ya subha ?? subha -->
+
+    <!--jha note text hogs wo chor do nechy jo design wala bold italic ye wala part design kro-->
+
+    <!--horizonatal linear layout m ok-->
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_48sdp"
+        android:layout_marginHorizontal="@dimen/_20sdp"
+        android:layout_marginBottom="@dimen/_20sdp"
+        android:background="@drawable/edit_back"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/_8sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/ripple_effect"
+            android:contentDescription="@string/app_name"
+            android:cropToPadding="false"
+            android:padding="@dimen/_6sdp"
+            android:src="@drawable/bold"
+            app:tint="@color/white" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/ripple_effect"
+            android:contentDescription="@string/app_name"
+            android:cropToPadding="false"
+            android:padding="@dimen/_6sdp"
+            android:src="@drawable/italic"
+            app:tint="@color/white" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/ripple_effect"
+            android:contentDescription="@string/app_name"
+            android:cropToPadding="false"
+            android:padding="@dimen/_6sdp"
+            android:src="@drawable/underline"
+            app:tint="@color/white" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/ripple_effect"
+            android:contentDescription="@string/app_name"
+            android:cropToPadding="false"
+            android:padding="@dimen/_6sdp"
+            android:src="@drawable/text"
+            app:tint="@color/white" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/ripple_effect"
+            android:contentDescription="@string/app_name"
+            android:cropToPadding="false"
+            android:padding="@dimen/_4sdp"
+            android:src="@drawable/justify"
+            app:tint="@color/white" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/ripple_effect"
+            android:contentDescription="@string/app_name"
+            android:padding="@dimen/_4sdp"
+            android:src="@drawable/format"
+            app:tint="@color/white" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/ripple_effect"
+            android:contentDescription="@string/app_name"
+            android:cropToPadding="false"
+            android:padding="@dimen/_4sdp"
+            android:src="@drawable/tool"
+            app:tint="@color/white" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/ripple_effect"
+            android:contentDescription="@string/app_name"
+            android:cropToPadding="false"
+            android:padding="@dimen/_4sdp"
+            android:src="@drawable/format_right"
+            app:tint="@color/white" />
+
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

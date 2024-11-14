@@ -55,4 +55,6 @@ dependencies {
 
     implementation (libs.sdp.android)
     implementation (libs.ssp.android)
+
+    implementation(libs.richeditor.android)
 }

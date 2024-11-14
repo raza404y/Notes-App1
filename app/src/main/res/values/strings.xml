@@ -9,4 +9,6 @@
     <string name="oct">Oct</string>
     <string name="all">All</string>
     <string name="detail">1. Review of Previous\n   Action Items\n2. Product Development\n   Update\n3. User Feedback and\n   Customer Insights\n4. Competitive Analysis\n5. Roadmap Discussion</string>
+    <string name="product_details">Product Details:</string>
+    <string name="title">Title</string>
 </resources>
