@@ -1,15 +1,12 @@
 package com.blinklab.notesapp.adapters
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
 import android.widget.TextView
-import androidx.appcompat.view.menu.MenuView.ItemView
 import androidx.recyclerview.widget.RecyclerView
 import com.blinklab.notesapp.R
-import com.blinklab.notesapp.dataclass.DateDataclass
+import com.blinklab.notesapp.models.DateDataclass
 
 class DateAdapters ( var array:ArrayList<DateDataclass>):
         RecyclerView.Adapter<DateAdapters.MyViewHolder>(){

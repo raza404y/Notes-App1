@@ -6,12 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.blinklab.notesapp.R
-import com.blinklab.notesapp.adapters.DateAdapters
 import com.blinklab.notesapp.databinding.FragmentHomeBinding
-import com.blinklab.notesapp.dataclass.DateDataclass
 
 
 class HomeFragment : Fragment() {

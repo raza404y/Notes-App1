@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.blinklab.notesapp.R
-import com.blinklab.notesapp.dataclass.AllDataclass
+import com.blinklab.notesapp.models.AllDataclass
 
 class AllAdapter(var arrayList: ArrayList<AllDataclass>):
         RecyclerView.Adapter<AllAdapter.MyviewHolder>(){

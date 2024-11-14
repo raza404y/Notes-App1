@@ -1,3 +1,3 @@
-package com.blinklab.notesapp.dataclass
+package com.blinklab.notesapp.models
 
 data class AllDataclass(var all:String)

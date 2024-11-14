@@ -12,9 +12,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.blinklab.notesapp.adapters.AllAdapter
 import com.blinklab.notesapp.adapters.DateAdapters
 import com.blinklab.notesapp.adapters.DetailAdapter
-import com.blinklab.notesapp.dataclass.AllDataclass
-import com.blinklab.notesapp.dataclass.DateDataclass
-import com.blinklab.notesapp.dataclass.DetailDataclass
+import com.blinklab.notesapp.models.AllDataclass
+import com.blinklab.notesapp.models.DateDataclass
+import com.blinklab.notesapp.models.DetailDataclass
 
 class MainActivity : AppCompatActivity() {
 
@@ -83,9 +83,10 @@ class MainActivity : AppCompatActivity() {
         detailArrayList.add(DetailDataclass("1.Review of Previous\n    Action Items\n2.Product Development\n    Update\n3.User Feedback and\n    Customer Insights\n4.Competitive Analysis\n5.Roadmap Discussion"))
         detailArrayList.add(DetailDataclass("1.Review of Previous\n    Action Items\n2.Product Development\n    Update\n3.User Feedback and\n    Customer Insights\n4.Competitive Analysis\n5.Roadmap Discussion"))
 
-        val adapt = DetailAdapter(detailArrayList)
+        val adapt = DetailAdapter(this@MainActivity,detailArrayList)
         detailRecycle.adapter=adapt
         detailRecycle.layoutManager=GridLayoutManager(this,2)
 
     }
 }
+//crash ho rhi ha
