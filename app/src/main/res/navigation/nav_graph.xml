@@ -11,17 +11,21 @@
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_homeFragment_to_addNoteFragment"
-            app:destination="@id/addNoteFragment" />
+            android:id="@+id/action_homeFragment_to_readAndFormatNote"
+            app:destination="@id/readAndFormatNote" />
         <action
             android:id="@+id/action_homeFragment_to_likeFragment"
             app:destination="@id/likeFragment" />
     </fragment>
     <fragment
-        android:id="@+id/addNoteFragment"
-        android:name="com.blinklab.notesapp.fragments.AddNoteFragment"
+        android:id="@+id/readAndFormatNote"
+        android:name="com.blinklab.notesapp.fragments.ReadAndFormatNote"
         android:label="fragment_add_note"
-        tools:layout="@layout/fragment_add_note" />
+        tools:layout="@layout/fragment_read_and_format_note" >
+        <argument
+            android:name="myNotes"
+            app:argType="com.blinklab.notesapp.models.NotesModel" />
+    </fragment>
     <fragment
         android:id="@+id/likeFragment"
         android:name="com.blinklab.notesapp.fragments.LikeFragment"

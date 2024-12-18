@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.AddNoteFragment">
+    tools:context=".fragments.ReadAndFormatNote">
 
     <ImageView
-        android:id="@+id/back_arrow"
+        android:id="@+id/back_arrow_note"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_20sdp"
@@ -16,72 +16,48 @@
         android:src="@drawable/back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:tint="@color/grey" />
+        app:tint="@color/black_berry" />
 
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="@+id/back_arrow"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/back_arrow">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/_10sdp"
+        <ImageButton
+            android:id="@+id/save_btn"
+            android:layout_width="@dimen/_38sdp"
+            android:layout_height="@dimen/_38sdp"
+            android:layout_marginHorizontal="@dimen/_14sdp"
             android:layout_marginVertical="@dimen/_10sdp"
             android:contentDescription="@string/app_name"
-            android:src="@drawable/clipboard"
-            app:tint="@color/grey" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/_10sdp"
-            android:layout_marginVertical="@dimen/_10sdp"
-            android:contentDescription="@string/app_name"
-            android:src="@drawable/heart" />
+            android:src="@drawable/correct"
+            android:padding="@dimen/_5sdp"
+            android:background="@drawable/save_btn_bg"
+            app:layout_constraintBottom_toBottomOf="@+id/back_arrow_note"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/back_arrow_note"
+             />
 
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/_10sdp"
-            android:layout_marginVertical="@dimen/_10sdp"
-            android:contentDescription="@string/app_name"
-            android:src="@drawable/file"
-            app:tint="@color/grey" />
-
-
-    </LinearLayout>
 
     <View
         android:id="@+id/divider"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginTop="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_14sdp"
         android:background="?android:attr/listDivider"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/back_arrow" />
+        app:layout_constraintTop_toBottomOf="@+id/back_arrow_note" />
 
-    <EditText
-        android:id="@+id/title"
+    <TextView
+        android:id="@+id/note_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:autofillHints=""
         android:background="@android:color/transparent"
         android:gravity="start"
         android:hint="@string/title"
-        android:imeOptions="actionNext"
-        android:inputType="text"
         android:maxLength="100"
         android:maxLines="2"
-        android:padding="@dimen/_12sdp"
-        android:textSize="@dimen/_25sdp"
+        android:padding="@dimen/_16sdp"
+        android:textSize="@dimen/_25ssp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -89,15 +65,17 @@
 
 
     <jp.wasabeef.richeditor.RichEditor
-        android:id="@+id/richEditor"
+        android:id="@+id/editor"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title" />
+        app:layout_constraintTop_toBottomOf="@+id/note_title" />
 
-    <!--next editor ko set krna backend sy abi krna ya subha ?? subha -->
+    <!--next editor ko set krna backend sy abi krna ya subha ?? subha ok-->
 
     <!--jha note text hogs wo chor do nechy jo design wala bold italic ye wala part design kro-->
 
@@ -118,6 +96,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <ImageView
+            android:id="@+id/bold_btn"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -129,6 +108,7 @@
             app:tint="@color/white" />
 
         <ImageView
+            android:id="@+id/italic_btn"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -140,6 +120,7 @@
             app:tint="@color/white" />
 
         <ImageView
+            android:id="@+id/underline_btn"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -151,6 +132,7 @@
             app:tint="@color/white" />
 
         <ImageView
+            android:id="@+id/text_btn"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -162,6 +144,7 @@
             app:tint="@color/white" />
 
         <ImageView
+            android:id="@+id/points_btn"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -173,6 +156,7 @@
             app:tint="@color/white" />
 
         <ImageView
+            android:id="@+id/align_left_btn"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -183,6 +167,7 @@
             app:tint="@color/white" />
 
         <ImageView
+            android:id="@+id/align_center_btn"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -194,6 +179,7 @@
             app:tint="@color/white" />
 
         <ImageView
+            android:id="@+id/align_right_btn"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"

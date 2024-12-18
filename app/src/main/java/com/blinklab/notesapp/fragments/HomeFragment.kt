@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,7 +16,7 @@ import com.blinklab.notesapp.adapters.NotesAdapter
 import com.blinklab.notesapp.databinding.FragmentHomeBinding
 import com.blinklab.notesapp.models.AllDataclass
 import com.blinklab.notesapp.models.DateDataclass
-import com.blinklab.notesapp.models.DetailDataclass
+import com.blinklab.notesapp.models.NotesModel
 
 
 class HomeFragment : Fragment() {
@@ -27,7 +28,7 @@ class HomeFragment : Fragment() {
     private lateinit var allArrayList: ArrayList<AllDataclass>
     private lateinit var adapter: AllAdapter
 
-    private lateinit var detailArrayList: ArrayList<DetailDataclass>
+    private lateinit var detailArrayList: ArrayList<NotesModel>
     private lateinit var adapterr: NotesAdapter
 
     override fun onCreateView(
@@ -41,7 +42,7 @@ class HomeFragment : Fragment() {
         }
 
         binding.addNewBtn.setOnClickListener {
-            navController.navigate(R.id.action_homeFragment_to_addNoteFragment)
+            navController.navigate(R.id.action_homeFragment_to_readAndFormatNote)
         }
 
         /*val daterecycler= view?.findViewById<RecyclerView>(R.id.daterecyclerView)*/
@@ -77,22 +78,27 @@ class HomeFragment : Fragment() {
         val allly = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         Allrecycler.layoutManager = (allly)
 
+
         /*val detailRecycle =view?.findViewById<RecyclerView>(R.id.detailRecycler)*/
         val detailRecycle = binding.detailRecycler
         detailArrayList = ArrayList()
-        detailArrayList.add(DetailDataclass("1.Review of Previous\n    Action Items\n2.Product Development\n    Update\n3.User Feedback and\n    Customer Insights\n4.Competitive Analysis\n5.Roadmap Discussion"))
-        detailArrayList.add(DetailDataclass("1.Review of Previous\n    Action Items\n2.Product Development\n    Update\n3.User Feedback and\n    Customer Insights\n4.Competitive Analysis\n5.Roadmap Discussion"))
-        detailArrayList.add(DetailDataclass("1.Review of Previous\n    Action Items\n2.Product Development\n    Update\n3.User Feedback and\n    Customer Insights\n4.Competitive Analysis\n5.Roadmap Discussion"))
-        detailArrayList.add(DetailDataclass("1.Review of Previous\n    Action Items\n2.Product Development\n    Update\n3.User Feedback and\n    Customer Insights\n4.Competitive Analysis\n5.Roadmap Discussion"))
-        detailArrayList.add(DetailDataclass("1.Review of Previous\n    Action Items\n2.Product Development\n    Update\n3.User Feedback and\n    Customer Insights\n4.Competitive Analysis\n5.Roadmap Discussion"))
-        detailArrayList.add(DetailDataclass("1.Review of Previous\n    Action Items\n2.Product Development\n    Update\n3.User Feedback and\n    Customer Insights\n4.Competitive Analysis\n5.Roadmap Discussion"))
-        detailArrayList.add(DetailDataclass("1.Review of Previous\n    Action Items\n2.Product Development\n    Update\n3.User Feedback and\n    Customer Insights\n4.Competitive Analysis\n5.Roadmap Discussion"))
-        detailArrayList.add(DetailDataclass("1.Review of Previous\n    Action Items\n2.Product Development\n    Update\n3.User Feedback and\n    Customer Insights\n4.Competitive Analysis\n5.Roadmap Discussion"))
-        detailArrayList.add(DetailDataclass("1.Review of Previous\n    Action Items\n2.Product Development\n    Update\n3.User Feedback and\n    Customer Insights\n4.Competitive Analysis\n5.Roadmap Discussion"))
-        detailArrayList.add(DetailDataclass("1.Review of Previous\n    Action Items\n2.Product Development\n    Update\n3.User Feedback and\n    Customer Insights\n4.Competitive Analysis\n5.Roadmap Discussion"))
-        detailArrayList.add(DetailDataclass("1.Review of Previous\n    Action Items\n2.Product Development\n    Update\n3.User Feedback and\n    Customer Insights\n4.Competitive Analysis\n5.Roadmap Discussion"))
+        detailArrayList.add(NotesModel("Customer Insights Discussion",ContextCompat.getString(requireContext(),R.string.blank_text)))
+        detailArrayList.add(NotesModel("Customer Insights Discussion",ContextCompat.getString(requireContext(),R.string.blank_text)))
+        detailArrayList.add(NotesModel("Customer Insights Discussion",ContextCompat.getString(requireContext(),R.string.blank_text)))
+        detailArrayList.add(NotesModel("Customer Insights Discussion",ContextCompat.getString(requireContext(),R.string.blank_text)))
+        detailArrayList.add(NotesModel("Customer Insights Discussion",ContextCompat.getString(requireContext(),R.string.blank_text)))
+        detailArrayList.add(NotesModel("Customer Insights Discussion",ContextCompat.getString(requireContext(),R.string.blank_text)))
+        detailArrayList.add(NotesModel("Customer Insights Discussion",ContextCompat.getString(requireContext(),R.string.blank_text)))
+        detailArrayList.add(NotesModel("Customer Insights Discussion",ContextCompat.getString(requireContext(),R.string.blank_text)))
+        detailArrayList.add(NotesModel("Customer Insights Discussion",ContextCompat.getString(requireContext(),R.string.blank_text)))
+        detailArrayList.add(NotesModel("Customer Insights Discussion",ContextCompat.getString(requireContext(),R.string.blank_text)))
+        detailArrayList.add(NotesModel("Customer Insights Discussion",ContextCompat.getString(requireContext(),R.string.blank_text)))
+        detailArrayList.add(NotesModel("Customer Insights Discussion",ContextCompat.getString(requireContext(),R.string.blank_text)))
+        detailArrayList.add(NotesModel("Customer Insights Discussion",ContextCompat.getString(requireContext(),R.string.blank_text)))
+        detailArrayList.add(NotesModel("Customer Insights Discussion",ContextCompat.getString(requireContext(),R.string.blank_text)))
+        detailArrayList.add(NotesModel("Customer Insights Discussion",ContextCompat.getString(requireContext(),R.string.blank_text)))
 
-        val adapt = NotesAdapter(requireContext(), detailArrayList)
+        val adapt = NotesAdapter(requireContext(), detailArrayList,navController)
         detailRecycle.adapter = adapt
         detailRecycle.layoutManager = GridLayoutManager(requireContext(), 2)
 

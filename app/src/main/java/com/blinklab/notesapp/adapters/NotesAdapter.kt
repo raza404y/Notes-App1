@@ -8,17 +8,21 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.blinklab.notesapp.R
-import com.blinklab.notesapp.models.DetailDataclass
+import com.blinklab.notesapp.fragments.HomeFragment
+import com.blinklab.notesapp.fragments.HomeFragmentDirections
+import com.blinklab.notesapp.models.NotesModel
 
-class NotesAdapter(private val context: Context, private val array: ArrayList<DetailDataclass>) :
+class NotesAdapter(private val context: Context, private val array: ArrayList<NotesModel>,val navController: NavController) :
     RecyclerView.Adapter<NotesAdapter.MYViewHolder>() {
 
     val colorsList = arrayListOf("#D9E8FC", "#FFD8F4", "#FDE99D", "#B0E9CA", "#FFEADD", "#FCFAD9")
 
     inner class MYViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val noteText = itemView.findViewById<TextView>(R.id.detail_text)
+        val title = itemView.findViewById<TextView>(R.id.note_title)
+        val text = itemView.findViewById<TextView>(R.id.note_text)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MYViewHolder {
@@ -32,14 +36,19 @@ class NotesAdapter(private val context: Context, private val array: ArrayList<De
     }
 
     override fun onBindViewHolder(holder: MYViewHolder, position: Int) {
-        val itemCount = array[position]
-        holder.noteText.text = itemCount.detail
+        val noteItem = array[position]
+        holder.title.text = noteItem.noteTitle
+        holder.text.text = noteItem.noteText
 
         val drawable =
             ContextCompat.getDrawable(context, R.drawable.detail_back) as GradientDrawable
         drawable.setColor(Color.parseColor(colorsList[position % colorsList.size]))
         holder.itemView.background = drawable
 
+        holder.itemView.setOnClickListener {
+           val action = HomeFragmentDirections.actionHomeFragmentToReadAndFormatNote(noteItem)
+            navController.navigate(action)
+        }
 
     }
 
