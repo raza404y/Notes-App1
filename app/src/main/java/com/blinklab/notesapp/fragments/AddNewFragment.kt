@@ -8,14 +8,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.NavArgs
-import androidx.navigation.fragment.navArgs
 import com.blinklab.notesapp.MainActivity
-import com.blinklab.notesapp.databinding.FragmentReadAndFormatNoteBinding
+import com.blinklab.notesapp.databinding.FragmentAddNewBinding
 
-class ReadAndFormatNote : Fragment() {
-    private lateinit var binding: FragmentReadAndFormatNoteBinding
-    private val navArg: ReadAndFormatNoteArgs by navArgs()
+class AddNewFragment : Fragment() {
+    private lateinit var binding: FragmentAddNewBinding
 
 
     @SuppressLint("MissingInflatedId")
@@ -23,7 +20,7 @@ class ReadAndFormatNote : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-         binding = FragmentReadAndFormatNoteBinding.inflate(layoutInflater)
+         binding = FragmentAddNewBinding.inflate(layoutInflater)
 
         binding.backArrowNote.setOnClickListener {
             val intent = Intent (requireContext(), MainActivity::class.java)
@@ -35,9 +32,6 @@ class ReadAndFormatNote : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val note = navArg.myNotes
-        binding.noteTitle.text= note.noteTitle
-        binding.editor.html = note.noteText
 
         binding.apply {
             editor.setEditorHeight(300)

@@ -46,7 +46,7 @@ class NotesAdapter(private val context: Context, private val array: ArrayList<No
         holder.itemView.background = drawable
 
         holder.itemView.setOnClickListener {
-           val action = HomeFragmentDirections.actionHomeFragmentToReadAndFormatNote(noteItem)
+           val action = HomeFragmentDirections.actionHomeFragmentToReadNoteFramgent(noteItem)
             navController.navigate(action)
         }
 

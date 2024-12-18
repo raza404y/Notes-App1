@@ -20,7 +20,7 @@ class AllAdapter(private var context: Context,private var arrayList: ArrayList<A
     inner class MyviewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val ally = itemView.findViewById<TextView>(R.id.alltext)
     }
-
+// run kro ok
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyviewHolder {
         val view =
             LayoutInflater.from(parent.context).inflate(R.layout.all_designfile, parent, false)

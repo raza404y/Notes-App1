@@ -42,7 +42,7 @@ class HomeFragment : Fragment() {
         }
 
         binding.addNewBtn.setOnClickListener {
-            navController.navigate(R.id.action_homeFragment_to_readAndFormatNote)
+            navController.navigate(R.id.action_homeFragment_to_addNewNote)
         }
 
         /*val daterecycler= view?.findViewById<RecyclerView>(R.id.daterecyclerView)*/

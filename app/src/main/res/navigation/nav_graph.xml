@@ -11,24 +11,32 @@
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_homeFragment_to_readAndFormatNote"
-            app:destination="@id/readAndFormatNote" />
+            android:id="@+id/action_homeFragment_to_addNewNote"
+            app:destination="@id/add_new_note" />
         <action
             android:id="@+id/action_homeFragment_to_likeFragment"
             app:destination="@id/likeFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_readNoteFramgent"
+            app:destination="@id/readNoteFramgent" />
     </fragment>
     <fragment
-        android:id="@+id/readAndFormatNote"
-        android:name="com.blinklab.notesapp.fragments.ReadAndFormatNote"
+        android:id="@+id/add_new_note"
+        android:name="com.blinklab.notesapp.fragments.AddNewFragment"
         android:label="fragment_add_note"
-        tools:layout="@layout/fragment_read_and_format_note" >
-        <argument
-            android:name="myNotes"
-            app:argType="com.blinklab.notesapp.models.NotesModel" />
-    </fragment>
+        tools:layout="@layout/fragment_add_new" />
     <fragment
         android:id="@+id/likeFragment"
         android:name="com.blinklab.notesapp.fragments.LikeFragment"
         android:label="fragment_like"
         tools:layout="@layout/fragment_like" />
+    <fragment
+        android:id="@+id/readNoteFramgent"
+        android:name="com.blinklab.notesapp.ReadNoteFragment"
+        android:label="fragment_read_note_framgent"
+        tools:layout="@layout/fragment_read_note_framgent" >
+        <argument
+            android:name="myNote"
+            app:argType="com.blinklab.notesapp.models.NotesModel" />
+    </fragment>
 </navigation>
