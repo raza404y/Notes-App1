@@ -16,7 +16,11 @@ import com.blinklab.notesapp.adapters.NotesAdapter
 import com.blinklab.notesapp.databinding.FragmentHomeBinding
 import com.blinklab.notesapp.models.AllDataclass
 import com.blinklab.notesapp.models.DateDataclass
+import com.blinklab.notesapp.models.DayModel
 import com.blinklab.notesapp.models.NotesModel
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
 
 
 class HomeFragment : Fragment() {
@@ -47,19 +51,13 @@ class HomeFragment : Fragment() {
 
         /*val daterecycler= view?.findViewById<RecyclerView>(R.id.daterecyclerView)*/
         val daterecycler = binding.daterecyclerView
-        dateArrayList = ArrayList()
-        dateArrayList.add(DateDataclass("Wed", "23", "Oct"))
-        dateArrayList.add(DateDataclass("Thu", "24", "Oct"))
-        dateArrayList.add(DateDataclass("Fri", "25", "Oct"))
-        dateArrayList.add(DateDataclass("Sat", "26", "Oct"))
-        dateArrayList.add(DateDataclass("Sun", "27", "Oct"))
-        dateArrayList.add(DateDataclass("Mon", "28", "Oct"))
-        dateArrayList.add(DateDataclass("Tue", "29", "Oct"))
+       val dayList = gettingLastDaysOfWeeks()
 
-        val adapter = DateAdapters(requireContext(),dateArrayList)
+
+        val adapter = DateAdapters(requireContext(), dayList)
         daterecycler.adapter = adapter
         val datee = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        daterecycler.layoutManager = (datee)
+        daterecycler.layoutManager = datee
 
         /* val Allrecycler = view?.findViewById<RecyclerView>(R.id.allrecyclerview)*/
         val Allrecycler = binding.allrecyclerview
@@ -73,7 +71,7 @@ class HomeFragment : Fragment() {
         allArrayList.add(AllDataclass("Expenditures"))
         allArrayList.add(AllDataclass("Dues"))
 
-        val adappte = AllAdapter(requireContext(),allArrayList)
+        val adappte = AllAdapter(requireContext(), allArrayList)
         Allrecycler.adapter = adappte
         val allly = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         Allrecycler.layoutManager = (allly)
@@ -82,23 +80,98 @@ class HomeFragment : Fragment() {
         /*val detailRecycle =view?.findViewById<RecyclerView>(R.id.detailRecycler)*/
         val detailRecycle = binding.detailRecycler
         detailArrayList = ArrayList()
-        detailArrayList.add(NotesModel("Customer Insights Discussion",ContextCompat.getString(requireContext(),R.string.blank_text)))
-        detailArrayList.add(NotesModel("Customer Insights Discussion",ContextCompat.getString(requireContext(),R.string.blank_text)))
-        detailArrayList.add(NotesModel("Customer Insights Discussion",ContextCompat.getString(requireContext(),R.string.blank_text)))
-        detailArrayList.add(NotesModel("Customer Insights Discussion",ContextCompat.getString(requireContext(),R.string.blank_text)))
-        detailArrayList.add(NotesModel("Customer Insights Discussion",ContextCompat.getString(requireContext(),R.string.blank_text)))
-        detailArrayList.add(NotesModel("Customer Insights Discussion",ContextCompat.getString(requireContext(),R.string.blank_text)))
-        detailArrayList.add(NotesModel("Customer Insights Discussion",ContextCompat.getString(requireContext(),R.string.blank_text)))
-        detailArrayList.add(NotesModel("Customer Insights Discussion",ContextCompat.getString(requireContext(),R.string.blank_text)))
-        detailArrayList.add(NotesModel("Customer Insights Discussion",ContextCompat.getString(requireContext(),R.string.blank_text)))
-        detailArrayList.add(NotesModel("Customer Insights Discussion",ContextCompat.getString(requireContext(),R.string.blank_text)))
-        detailArrayList.add(NotesModel("Customer Insights Discussion",ContextCompat.getString(requireContext(),R.string.blank_text)))
-        detailArrayList.add(NotesModel("Customer Insights Discussion",ContextCompat.getString(requireContext(),R.string.blank_text)))
-        detailArrayList.add(NotesModel("Customer Insights Discussion",ContextCompat.getString(requireContext(),R.string.blank_text)))
-        detailArrayList.add(NotesModel("Customer Insights Discussion",ContextCompat.getString(requireContext(),R.string.blank_text)))
-        detailArrayList.add(NotesModel("Customer Insights Discussion",ContextCompat.getString(requireContext(),R.string.blank_text)))
+        detailArrayList.add(
+            NotesModel(
+                "Customer Insights Discussion",
+                ContextCompat.getString(requireContext(), R.string.blank_text)
+            )
+        )
+        detailArrayList.add(
+            NotesModel(
+                "Customer Insights Discussion",
+                ContextCompat.getString(requireContext(), R.string.blank_text)
+            )
+        )
+        detailArrayList.add(
+            NotesModel(
+                "Customer Insights Discussion",
+                ContextCompat.getString(requireContext(), R.string.blank_text)
+            )
+        )
+        detailArrayList.add(
+            NotesModel(
+                "Customer Insights Discussion",
+                ContextCompat.getString(requireContext(), R.string.blank_text)
+            )
+        )
+        detailArrayList.add(
+            NotesModel(
+                "Customer Insights Discussion",
+                ContextCompat.getString(requireContext(), R.string.blank_text)
+            )
+        )
+        detailArrayList.add(
+            NotesModel(
+                "Customer Insights Discussion",
+                ContextCompat.getString(requireContext(), R.string.blank_text)
+            )
+        )
+        detailArrayList.add(
+            NotesModel(
+                "Customer Insights Discussion",
+                ContextCompat.getString(requireContext(), R.string.blank_text)
+            )
+        )
+        detailArrayList.add(
+            NotesModel(
+                "Customer Insights Discussion",
+                ContextCompat.getString(requireContext(), R.string.blank_text)
+            )
+        )
+        detailArrayList.add(
+            NotesModel(
+                "Customer Insights Discussion",
+                ContextCompat.getString(requireContext(), R.string.blank_text)
+            )
+        )
+        detailArrayList.add(
+            NotesModel(
+                "Customer Insights Discussion",
+                ContextCompat.getString(requireContext(), R.string.blank_text)
+            )
+        )
+        detailArrayList.add(
+            NotesModel(
+                "Customer Insights Discussion",
+                ContextCompat.getString(requireContext(), R.string.blank_text)
+            )
+        )
+        detailArrayList.add(
+            NotesModel(
+                "Customer Insights Discussion",
+                ContextCompat.getString(requireContext(), R.string.blank_text)
+            )
+        )
+        detailArrayList.add(
+            NotesModel(
+                "Customer Insights Discussion",
+                ContextCompat.getString(requireContext(), R.string.blank_text)
+            )
+        )
+        detailArrayList.add(
+            NotesModel(
+                "Customer Insights Discussion",
+                ContextCompat.getString(requireContext(), R.string.blank_text)
+            )
+        )
+        detailArrayList.add(
+            NotesModel(
+                "Customer Insights Discussion",
+                ContextCompat.getString(requireContext(), R.string.blank_text)
+            )
+        )
 
-        val adapt = NotesAdapter(requireContext(), detailArrayList,navController)
+        val adapt = NotesAdapter(requireContext(), detailArrayList, navController)
         detailRecycle.adapter = adapt
         detailRecycle.layoutManager = GridLayoutManager(requireContext(), 2)
 
@@ -106,4 +179,22 @@ class HomeFragment : Fragment() {
         return binding.root
     }
 
+    private fun gettingLastDaysOfWeeks(): MutableList<DateDataclass> {
+        val calender = Calendar.getInstance()
+        val day = SimpleDateFormat("EEE", Locale.getDefault())
+        val month = SimpleDateFormat("MMM", Locale.getDefault())
+        val date = SimpleDateFormat("dd", Locale.getDefault())
+
+        val list = mutableListOf<DateDataclass>()
+        for (i in 0..6) {
+            DateDataclass(
+                dayA = day.format(calender.time),
+                monthA = month.format(calender.time),
+                dateA = date.format(calender.time)
+            )
+        }
+        calender.add(Calendar.DAY_OF_MONTH, 1)
+
+        return list
+    }
 }

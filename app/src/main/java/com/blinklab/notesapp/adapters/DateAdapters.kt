@@ -12,8 +12,9 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.blinklab.notesapp.R
 import com.blinklab.notesapp.models.DateDataclass
+import com.blinklab.notesapp.models.DayModel
 
-class DateAdapters(private var context: Context,private var array: ArrayList<DateDataclass>) :
+class DateAdapters(private var context: Context, private var array: MutableList<DateDataclass>) :
     RecyclerView.Adapter<DateAdapters.MyViewHolder>() {
 
         private var selectedItemPosition = 0
