@@ -51,7 +51,7 @@ class HomeFragment : Fragment() {
 
         /*val daterecycler= view?.findViewById<RecyclerView>(R.id.daterecyclerView)*/
         val daterecycler = binding.daterecyclerView
-       val dayList = gettingLastDaysOfWeeks()
+        val dayList = gettingLastDaysOfWeeks()
 
 
         val adapter = DateAdapters(requireContext(), dayList)
@@ -65,11 +65,25 @@ class HomeFragment : Fragment() {
         allArrayList.add(AllDataclass("All"))
         allArrayList.add(AllDataclass("Important"))
         allArrayList.add(AllDataclass("Lecture Notes"))
-        allArrayList.add(AllDataclass("To-do lists"))
         allArrayList.add(AllDataclass("Shopping"))
         allArrayList.add(AllDataclass("Grocery"))
-        allArrayList.add(AllDataclass("Expenditures"))
-        allArrayList.add(AllDataclass("Dues"))
+
+        /*
+        * let say user note a lecture a or something about shopping or important
+        * when user will save how hhe wil decide what type of this note iis */
+        // how to handle it ?
+        // aik tu es trh k jab add k button py click krain tu pehly wo
+        // category pochy  us k baad kuch likh k us mn save kr dy
+        //secon kuch bhi likhny k baad jab save krny lgy tab different categories k option
+        // ain aur jis py click krain us mn save ho
+        // es k leye custom dialog alert design kro then jab user note k baad click kry ga save per
+        // tu dialog show user will select it is a important lecutre etc..
+        // ek new file bnao priority_dialog
+        // 4 text views lo
+        // first mien important second mien lecuture then shopping then grocery sai
+        //aur aik first text bhi lgy ga k text select krain? han
+        //size kasy lena es ka
+        // text size? g ek bari simple he rkho 14sp then adust krty hain okay
 
         val adappte = AllAdapter(requireContext(), allArrayList)
         Allrecycler.adapter = adappte
@@ -77,100 +91,17 @@ class HomeFragment : Fragment() {
         Allrecycler.layoutManager = (allly)
 
 
-        /*val detailRecycle =view?.findViewById<RecyclerView>(R.id.detailRecycler)*/
         val detailRecycle = binding.detailRecycler
         detailArrayList = ArrayList()
-        detailArrayList.add(
-            NotesModel(
-                "Customer Insights Discussion",
-                ContextCompat.getString(requireContext(), R.string.blank_text)
-            )
-        )
-        detailArrayList.add(
-            NotesModel(
-                "Customer Insights Discussion",
-                ContextCompat.getString(requireContext(), R.string.blank_text)
-            )
-        )
-        detailArrayList.add(
-            NotesModel(
-                "Customer Insights Discussion",
-                ContextCompat.getString(requireContext(), R.string.blank_text)
-            )
-        )
-        detailArrayList.add(
-            NotesModel(
-                "Customer Insights Discussion",
-                ContextCompat.getString(requireContext(), R.string.blank_text)
-            )
-        )
-        detailArrayList.add(
-            NotesModel(
-                "Customer Insights Discussion",
-                ContextCompat.getString(requireContext(), R.string.blank_text)
-            )
-        )
-        detailArrayList.add(
-            NotesModel(
-                "Customer Insights Discussion",
-                ContextCompat.getString(requireContext(), R.string.blank_text)
-            )
-        )
-        detailArrayList.add(
-            NotesModel(
-                "Customer Insights Discussion",
-                ContextCompat.getString(requireContext(), R.string.blank_text)
-            )
-        )
-        detailArrayList.add(
-            NotesModel(
-                "Customer Insights Discussion",
-                ContextCompat.getString(requireContext(), R.string.blank_text)
-            )
-        )
-        detailArrayList.add(
-            NotesModel(
-                "Customer Insights Discussion",
-                ContextCompat.getString(requireContext(), R.string.blank_text)
-            )
-        )
-        detailArrayList.add(
-            NotesModel(
-                "Customer Insights Discussion",
-                ContextCompat.getString(requireContext(), R.string.blank_text)
-            )
-        )
-        detailArrayList.add(
-            NotesModel(
-                "Customer Insights Discussion",
-                ContextCompat.getString(requireContext(), R.string.blank_text)
-            )
-        )
-        detailArrayList.add(
-            NotesModel(
-                "Customer Insights Discussion",
-                ContextCompat.getString(requireContext(), R.string.blank_text)
-            )
-        )
-        detailArrayList.add(
-            NotesModel(
-                "Customer Insights Discussion",
-                ContextCompat.getString(requireContext(), R.string.blank_text)
-            )
-        )
-        detailArrayList.add(
-            NotesModel(
-                "Customer Insights Discussion",
-                ContextCompat.getString(requireContext(), R.string.blank_text)
-            )
-        )
-        detailArrayList.add(
-            NotesModel(
-                "Customer Insights Discussion",
-                ContextCompat.getString(requireContext(), R.string.blank_text)
-            )
-        )
 
+        for (i in 1..15) {
+            detailArrayList.add(
+                NotesModel(
+                    "Customer Insights Discussion",
+                    ContextCompat.getString(requireContext(), R.string.blank_text)
+                )
+            )
+        }
         val adapt = NotesAdapter(requireContext(), detailArrayList, navController)
         detailRecycle.adapter = adapt
         detailRecycle.layoutManager = GridLayoutManager(requireContext(), 2)
@@ -186,14 +117,16 @@ class HomeFragment : Fragment() {
         val date = SimpleDateFormat("dd", Locale.getDefault())
 
         val list = mutableListOf<DateDataclass>()
-        for (i in 0..6) {
-            DateDataclass(
-                dayA = day.format(calender.time),
-                monthA = month.format(calender.time),
-                dateA = date.format(calender.time)
+        for (i in 0..30) {
+            list.add(
+                DateDataclass(
+                    dayA = day.format(calender.time),
+                    monthA = month.format(calender.time),
+                    dateA = date.format(calender.time)
+                )
             )
+            calender.add(Calendar.DAY_OF_MONTH, -1)
         }
-        calender.add(Calendar.DAY_OF_MONTH, 1)
 
         return list
     }

@@ -9,6 +9,12 @@
 
     <style name="Theme.NotesApp" parent="Base.Theme.NotesApp" />
 
+    <!--ye cheezy try remember k kasy animation wagera laty hain and alert dialog bna k set krty ek butn click
+   ok ? ok code yad ni rhy just tr remember ways how to do-->
+    <style name="DialogAnimation" parent="">
+        <item name="android:windowEnterAnimation">@anim/fade_in</item>
+        <item name="android:windowExitAnimation">@anim/fade_out</item>
+    </style>
 
 
 

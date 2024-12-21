@@ -1,15 +1,21 @@
 package com.blinklab.notesapp.fragments
 
 import android.annotation.SuppressLint
+import android.app.Dialog
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
+import android.view.WindowManager
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.blinklab.notesapp.MainActivity
+import com.blinklab.notesapp.R
 import com.blinklab.notesapp.databinding.FragmentAddNewBinding
+import com.blinklab.notesapp.databinding.PriortyDialogBinding
 
 class AddNewFragment : Fragment() {
     private lateinit var binding: FragmentAddNewBinding
@@ -41,8 +47,48 @@ class AddNewFragment : Fragment() {
         }
         textFormatingOptions()
 
+        binding.saveBtn.setOnClickListener {
+
+            priorityDialog()
+
+        }
+
     }
 
+    private fun priorityDialog() {
+        val dialog  = Dialog(requireContext())
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setCancelable(true)
+        val binding = PriortyDialogBinding.inflate(layoutInflater)
+        dialog.setContentView(binding.root)
+        dialog.window?.setLayout(
+            (resources.displayMetrics.widthPixels * 0.8).toInt(), // 0.8 mean 80% width of screen ok
+            WindowManager.LayoutParams.WRAP_CONTENT
+        )
+        dialog.window?.setBackgroundDrawableResource(R.drawable.round_dialog_bg)
+        dialog.window?.attributes?.windowAnimations = R.style.DialogAnimation
+        binding.important.setOnClickListener {
+            showToast("Important")
+            dialog.dismiss()
+        }
+        binding.lecture.setOnClickListener {
+            showToast("Lecture Note")
+            dialog.dismiss()
+        }
+        binding.shopping.setOnClickListener {
+            showToast("Shopping")
+            dialog.dismiss()
+        }
+        binding.grocery.setOnClickListener {
+            showToast("Grocery")
+            dialog.dismiss()
+        }
+
+// baqi kal sahi next ok mujhy koi important topic backend k bta dain jis ki khud practice kron
+
+        dialog.show()
+    }
+// ab es dialog design ko thora better kro textsize etc
     private fun textFormatingOptions() {
         binding.apply {
             boldBtn.setOnClickListener { editor.setBold() }
@@ -54,5 +100,8 @@ class AddNewFragment : Fragment() {
             textBtn.setOnClickListener { editor.setTextBackgroundColor(Color.YELLOW) }
             pointsBtn.setOnClickListener { editor.setBullets() }
         }
+    }
+    private fun showToast(msg:String){
+        Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show()
     }
 }
