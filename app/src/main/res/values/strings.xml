@@ -10,9 +10,11 @@
     <string name="all">All</string>
     <string name="detail">1. Review of Previous\n   Action Items\n2. Product Development\n   Update\n3. User Feedback and\n   Customer Insights\n4. Competitive Analysis\n5. Roadmap Discussion</string>
     <string name="product_details">Product Details:</string>
+    <string name="details">1.Review of Previous…</string>
     <string name="title">Title</string>
     <string name="blank_text">I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure.</string>
     <string name="select_priority">Select Priority</string>
+    <string name="recently_delete">Recently delete</string>
 
 
 </resources>

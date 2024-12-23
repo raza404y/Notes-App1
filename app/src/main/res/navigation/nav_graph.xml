@@ -27,9 +27,9 @@
         tools:layout="@layout/fragment_add_new" />
     <fragment
         android:id="@+id/likeFragment"
-        android:name="com.blinklab.notesapp.fragments.LikeFragment"
+        android:name="com.blinklab.notesapp.fragments.DeleteFragment"
         android:label="fragment_like"
-        tools:layout="@layout/fragment_like" />
+        tools:layout="@layout/fragment_delete" />
     <fragment
         android:id="@+id/readNoteFramgent"
         android:name="com.blinklab.notesapp.ReadNoteFragment"

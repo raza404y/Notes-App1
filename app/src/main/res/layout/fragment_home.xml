@@ -26,9 +26,9 @@
 
     <ImageView
         android:id="@+id/likeButton"
-        android:layout_width="@dimen/_26sdp"
-        android:layout_height="@dimen/_26sdp"
-        android:src="@drawable/heart"
+        android:layout_width="@dimen/_27sdp"
+        android:layout_height="@dimen/_27sdp"
+        android:src="@drawable/delete"
         android:background="@drawable/ripple_effect"
         android:contentDescription="@null"
         android:layout_marginEnd="@dimen/_18sdp"

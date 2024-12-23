@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/delete_back"
+    android:padding="@dimen/_8sdp"
+    android:layout_margin="@dimen/_10sdp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <!--ab es application mein kia abqi reh gya ha ? ham koi bhi note likh k save kr skty hain ab??
+
+    No abi ye just frontend work howa ab tak database wala part ab hoga next
+    wo kal ya parso sahi ok-->
+    <!--code github mien krdo ok -->
+
+    <TextView
+        android:id="@+id/note_title_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/product_details"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_14ssp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/detail_del"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/details"
+        app:layout_constraintTop_toBottomOf="@id/note_title_delete"
+        app:layout_constraintStart_toStartOf="@id/note_title_delete"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -34,7 +34,6 @@ class AddNewFragment : Fragment() {
         }
         return binding.root
     }
-    // ye error q aya select files?
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
