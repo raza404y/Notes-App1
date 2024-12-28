@@ -14,11 +14,19 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.blinklab.notesapp.MainActivity
 import com.blinklab.notesapp.R
+import com.blinklab.notesapp.database.dao.NoteDAO
+import com.blinklab.notesapp.database.db.NoteDatabase
+import com.blinklab.notesapp.database.entities.Note
 import com.blinklab.notesapp.databinding.FragmentAddNewBinding
 import com.blinklab.notesapp.databinding.PriortyDialogBinding
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
 
 class AddNewFragment : Fragment() {
     private lateinit var binding: FragmentAddNewBinding
+    private lateinit var priority : String
+    private lateinit var noteDAO: NoteDAO
 
 
     @SuppressLint("MissingInflatedId")
@@ -37,6 +45,10 @@ class AddNewFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
+        val objDatabase = NoteDatabase.createDatabase(requireContext())
+        noteDAO = objDatabase.getNoteDao()
 
 
         binding.apply {
@@ -68,27 +80,48 @@ class AddNewFragment : Fragment() {
         dialog.window?.setBackgroundDrawableResource(R.drawable.round_dialog_bg)
         dialog.window?.attributes?.windowAnimations = R.style.DialogAnimation
         binding.important.setOnClickListener {
-            showToast("Important")
+            priority = "Important"
             dialog.dismiss()
         }
         binding.lecture.setOnClickListener {
-            showToast("Lecture Note")
+            priority= "Lecture Notes"
             dialog.dismiss()
         }
         binding.shopping.setOnClickListener {
-            showToast("Shopping")
+           priority="Shopping"
             dialog.dismiss()
         }
         binding.grocery.setOnClickListener {
-            showToast("Grocery")
+            priority="Grocery"
             dialog.dismiss()
         }
+        dialog.setOnDismissListener {
+            saveNoteInDatabase()
+        }
 
-// baqi kal sahi next ok mujhy koi important topic backend k bta dain jis ki khud practice kron
 
         dialog.show()
     }
-// ab es dialog design ko thora better kro textsize etc
+
+    private fun saveNoteInDatabase() {
+        val noteTitle = binding.noteTitle.text.toString().trim()
+        val noteText = binding.editor.html.toString().trim()
+        if (noteTitle.isEmpty()) {
+            showToast("Enter Title")
+        }else if (noteText.isEmpty()) {
+            showToast("Enter Text")
+        }else{
+            val calender = Calendar.getInstance()
+            val date = SimpleDateFormat("dd",Locale.getDefault()).format(calender.time)
+            val note = Note(null,noteTitle,noteText,priority,date)
+            noteDAO.insertNote(note)
+            showToast("Note Saved Successfully")
+            binding.noteTitle.setText("")
+            binding.editor.html=""
+           startActivity(Intent(requireContext(),MainActivity::class.java))
+        }
+    }
+
     private fun textFormatingOptions() {
         binding.apply {
             boldBtn.setOnClickListener { editor.setBold() }

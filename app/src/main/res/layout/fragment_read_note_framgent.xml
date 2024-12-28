@@ -4,12 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ReadNoteFragment">
+    tools:context=".fragments.ReadNoteFragment">
 
-    <!-- es mn kia design krna ha?
-     header my back butn then a horizontal divider
-     after it two textview for reading note one for title and another for note read
-     ok-->
+
 
     <ImageView
         android:id="@+id/back_arrow_note"
@@ -68,6 +65,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Statement"
+        android:textColor="@color/black"
         android:paddingHorizontal="@dimen/_15sdp"
         android:paddingVertical="@dimen/_5sdp"
         android:textSize="@dimen/_15ssp"

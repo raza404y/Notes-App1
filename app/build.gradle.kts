@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     id("androidx.navigation.safeargs.kotlin")
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -58,4 +59,8 @@ dependencies {
     implementation (libs.ssp.android)
 
     implementation(libs.richeditor.android)
+    implementation(libs.androidx.room.runtime)
+    ksp(libs.room.compiler)
+
+
 }

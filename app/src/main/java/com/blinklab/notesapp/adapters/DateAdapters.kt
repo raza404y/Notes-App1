@@ -14,10 +14,13 @@ import com.blinklab.notesapp.R
 import com.blinklab.notesapp.models.DateDataclass
 import com.blinklab.notesapp.models.DayModel
 
-class DateAdapters(private var context: Context, private var array: MutableList<DateDataclass>) :
+class DateAdapters(
+    private var context: Context, private var array: MutableList<DateDataclass>,
+    private val onItemClick: (String) -> Unit
+) :
     RecyclerView.Adapter<DateAdapters.MyViewHolder>() {
 
-        private var selectedItemPosition = 0
+    private var selectedItemPosition = -1
 
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val dday = itemView.findViewById<TextView>(R.id.day)
@@ -26,7 +29,8 @@ class DateAdapters(private var context: Context, private var array: MutableList<
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.date_designfile, parent, false)
+        val view =
+            LayoutInflater.from(parent.context).inflate(R.layout.date_designfile, parent, false)
         return MyViewHolder(view)
     }
 
@@ -34,14 +38,17 @@ class DateAdapters(private var context: Context, private var array: MutableList<
         return array.size
     }
 
-    override fun onBindViewHolder(holder: MyViewHolder, @SuppressLint("RecyclerView") position: Int) {
+    override fun onBindViewHolder(
+        holder: MyViewHolder,
+        @SuppressLint("RecyclerView") position: Int
+    ) {
         val date = array[position]
         holder.dday.text = date.dayA
         holder.ddate.text = date.dateA
         holder.mmonth.text = date.monthA
 
-        val drawable = ContextCompat.getDrawable(context,R.drawable.date_back) as GradientDrawable
-        if (holder.adapterPosition == selectedItemPosition){
+        val drawable = ContextCompat.getDrawable(context, R.drawable.date_back) as GradientDrawable
+        if (holder.adapterPosition == selectedItemPosition) {
             holder.apply {
                 dday.setTextColor(Color.WHITE)
                 ddate.setTextColor(Color.WHITE)
@@ -49,18 +56,19 @@ class DateAdapters(private var context: Context, private var array: MutableList<
             }
             drawable.setColor(Color.BLACK)
             holder.itemView.background = drawable
-        }else{
+        } else {
             holder.apply {
-                dday.setTextColor(ContextCompat.getColor(context,R.color.text_color))
-                ddate.setTextColor(ContextCompat.getColor(context,R.color.text_color))
+                dday.setTextColor(ContextCompat.getColor(context, R.color.text_color))
+                ddate.setTextColor(ContextCompat.getColor(context, R.color.text_color))
                 mmonth
-                    .setTextColor(ContextCompat.getColor(context,R.color.text_color))
+                    .setTextColor(ContextCompat.getColor(context, R.color.text_color))
             }
             drawable.setColor(Color.WHITE)
             holder.itemView.background = drawable
         }
         holder.itemView.setOnClickListener {
-                       selectedItemPosition = position
+            selectedItemPosition = position
+            onItemClick(date.dateA)
             notifyDataSetChanged()
         }
     }

@@ -13,14 +13,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.blinklab.notesapp.R
 import com.blinklab.notesapp.models.AllDataclass
 
-class AllAdapter(private var context: Context,private var arrayList: ArrayList<AllDataclass>) :
+class AllAdapter(private var context: Context,private var arrayList: ArrayList<AllDataclass>,
+    private val onClick:(String)->Unit) :
     RecyclerView.Adapter<AllAdapter.MyviewHolder>() {
     private var selectedPosition = 0
 
     inner class MyviewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val ally = itemView.findViewById<TextView>(R.id.alltext)
     }
-// run kro ok
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyviewHolder {
         val view =
             LayoutInflater.from(parent.context).inflate(R.layout.all_designfile, parent, false)
@@ -33,8 +34,8 @@ class AllAdapter(private var context: Context,private var arrayList: ArrayList<A
 
     @SuppressLint("NotifyDataSetChanged")
     override fun onBindViewHolder(holder: MyviewHolder, @SuppressLint("RecyclerView") position: Int) {
-        val itemCount = arrayList[position]
-        holder.ally.text = itemCount.all
+        val priority = arrayList[position]
+        holder.ally.text = priority.all
 
         val drawable =
             ContextCompat.getDrawable(context, R.drawable.all_back)?.mutate() as GradientDrawable
@@ -52,6 +53,7 @@ class AllAdapter(private var context: Context,private var arrayList: ArrayList<A
         holder.itemView.background = drawable
         holder.itemView.setOnClickListener {
             selectedPosition = position
+            onClick(priority.all)
             notifyDataSetChanged()
 
         }

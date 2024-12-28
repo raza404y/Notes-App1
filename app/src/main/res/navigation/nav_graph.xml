@@ -32,11 +32,11 @@
         tools:layout="@layout/fragment_delete" />
     <fragment
         android:id="@+id/readNoteFramgent"
-        android:name="com.blinklab.notesapp.ReadNoteFragment"
+        android:name="com.blinklab.notesapp.fragments.ReadNoteFragment"
         android:label="fragment_read_note_framgent"
         tools:layout="@layout/fragment_read_note_framgent" >
         <argument
             android:name="myNote"
-            app:argType="com.blinklab.notesapp.models.NotesModel" />
+            app:argType="com.blinklab.notesapp.database.entities.Note" />
     </fragment>
 </navigation>

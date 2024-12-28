@@ -8,11 +8,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <!--ab es application mein kia abqi reh gya ha ? ham koi bhi note likh k save kr skty hain ab??
 
-    No abi ye just frontend work howa ab tak database wala part ab hoga next
-    wo kal ya parso sahi ok-->
-    <!--code github mien krdo ok -->
 
     <TextView
         android:id="@+id/note_title_delete"
