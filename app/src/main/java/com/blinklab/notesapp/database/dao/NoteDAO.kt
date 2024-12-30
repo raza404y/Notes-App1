@@ -34,4 +34,4 @@ interface NoteDAO {
     @Query("select * from note where noteTitle like '%'|| :query ||'%' order by id desc")
     fun getNotesBySearch(query:String):List<Note>
 
-}
+}5
