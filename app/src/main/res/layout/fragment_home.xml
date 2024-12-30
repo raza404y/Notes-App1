@@ -8,7 +8,7 @@
     tools:context=".fragments.HomeFragment">
 
     <SearchView
-        android:id="@+id/editText"
+        android:id="@+id/search"
         android:layout_width="0dp"
         android:layout_height="@dimen/_42sdp"
         android:background="@drawable/search_back"
@@ -32,9 +32,9 @@
         android:background="@drawable/ripple_effect"
         android:contentDescription="@null"
         android:layout_marginEnd="@dimen/_18sdp"
-        app:layout_constraintBottom_toBottomOf="@+id/editText"
+        app:layout_constraintBottom_toBottomOf="@+id/search"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/editText" />
+        app:layout_constraintTop_toTopOf="@+id/search" />
 
 
     <androidx.core.widget.NestedScrollView
@@ -48,7 +48,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText">
+        app:layout_constraintTop_toBottomOf="@+id/search">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -64,8 +64,7 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-<!--CONTNUE KRO AD YE FLOATINg button ko idhr sy bahir
-nikal doon -->
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/allrecyclerview"
                 android:layout_width="match_parent"

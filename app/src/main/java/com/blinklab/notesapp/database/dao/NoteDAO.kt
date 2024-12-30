@@ -31,4 +31,7 @@ interface NoteDAO {
     @Query("select * from Note where date=:date order by id desc")
     fun getNotesByDate(date:String):LiveData<List<Note>>
 
+    @Query("select * from note where noteTitle like '%'|| :query ||'%' order by id desc")
+    fun getNotesBySearch(query:String):List<Note>
+
 }

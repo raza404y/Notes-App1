@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
@@ -127,7 +128,9 @@ class HomeFragment : Fragment() {
         detailArrayList = ArrayList()
 
 
-        notesAdapter = NotesAdapter(requireContext(), detailArrayList, navController)
+        notesAdapter = NotesAdapter(requireContext(), detailArrayList, navController){selectedNote->
+            noteDao.deleteNote(selectedNote)
+        }
         detailRecycle.adapter = notesAdapter
         val staggeredGridLayoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
         binding.detailRecycler.layoutManager = staggeredGridLayoutManager
@@ -141,6 +144,20 @@ class HomeFragment : Fragment() {
             }
         }
 
+
+        binding.search.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+               val result = noteDao.getNotesBySearch(query!!)
+                notesAdapter.updateList(result)
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                val result = noteDao.getNotesBySearch(newText!!)
+                notesAdapter.updateList(result)
+                return true
+            }
+        })
 
         return binding.root
     }

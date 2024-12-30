@@ -38,5 +38,13 @@
         <argument
             android:name="myNote"
             app:argType="com.blinklab.notesapp.database.entities.Note" />
+        <action
+            android:id="@+id/action_readNoteFramgent_to_update_Note"
+            app:destination="@id/update_Note" />
     </fragment>
+    <fragment
+        android:id="@+id/update_Note"
+        android:name="com.blinklab.notesapp.fragments.Update_Note"
+        android:label="fragment_update__note"
+        tools:layout="@layout/fragment_update__note" />
 </navigation>

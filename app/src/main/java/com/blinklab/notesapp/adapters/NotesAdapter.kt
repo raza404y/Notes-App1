@@ -4,6 +4,7 @@ import android.app.Dialog
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,8 +24,9 @@ import com.blinklab.notesapp.fragments.HomeFragmentDirections
 
 class NotesAdapter(
     private val context: Context,
-    private var noteList: List<Note>,
+    private var noteList: MutableList<Note>,
     val navController: NavController,
+    private val deleteItem : (Note)->Unit
 ) :
     RecyclerView.Adapter<NotesAdapter.MYViewHolder>() {
 
@@ -49,7 +51,7 @@ class NotesAdapter(
     override fun onBindViewHolder(holder: MYViewHolder, position: Int) {
         val noteItem = noteList[position]
         holder.title.text = noteItem.noteTitle
-        holder.priority.text=noteItem.priority
+        holder.priority.text = noteItem.priority
         holder.text.text = HtmlCompat.fromHtml(noteItem.noteText, HtmlCompat.FROM_HTML_MODE_LEGACY)
 
         val drawable =
@@ -63,7 +65,7 @@ class NotesAdapter(
         }
 
         holder.itemView.setOnLongClickListener(View.OnLongClickListener {
-            val dialog  = Dialog(context)
+            val dialog = Dialog(context)
             dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
             dialog.setCancelable(true)
             val binding = EditDeleteDialogBinding.inflate(LayoutInflater.from(context))
@@ -77,6 +79,21 @@ class NotesAdapter(
 
             binding.cross.setOnClickListener { dialog.dismiss() }
 
+            binding.delete.setOnClickListener {
+                deleteItem(noteItem)
+                noteList.removeAt(position)
+                notifyItemRemoved(position)
+                dialog.dismiss()
+            }
+
+            binding.edit.setOnClickListener {
+                val bundle = Bundle()
+                bundle.putInt("id", noteItem.id ?: 0)
+                bundle.putString("title", noteItem.noteTitle)
+                bundle.putString("note", noteItem.noteText)
+                navController.navigate(R.id.update_Note, bundle)
+                dialog.dismiss()
+            }
 
             dialog.show()
             return@OnLongClickListener true
@@ -85,10 +102,7 @@ class NotesAdapter(
     }
 
     fun updateList(newList: List<Note>) {
-        noteList = newList
+        noteList = newList.toMutableList()
         notifyDataSetChanged()
-    }
-    private fun priorityDialog() {
-
     }
 }

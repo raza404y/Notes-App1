@@ -21,7 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_50sdp"
-        android:text="What do you want?"
+        android:text="@string/what_do_you_want"
         android:textSize="@dimen/_14ssp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -45,19 +45,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view">
 
-
         <TextView
-            android:id="@+id/edit"
+            android:id="@+id/delete"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="@string/edit"
-            android:paddingEnd="@dimen/_16sdp"
-            android:layout_weight="1"
+            android:text="@string/delete"
             android:gravity="center"
-            android:textColor="#0973DC"
+            android:layout_weight="1"
+            android:textColor="#EB0D27"
             android:textSize="@dimen/_16ssp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/view" />
 
         <View
@@ -71,16 +69,17 @@
             app:layout_constraintTop_toBottomOf="@+id/view" />
 
         <TextView
-            android:id="@+id/delete"
+            android:id="@+id/edit"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="@string/delete"
-            android:gravity="center"
+            android:text="@string/edit"
+            android:paddingEnd="@dimen/_16sdp"
             android:layout_weight="1"
-            android:textColor="#DE1162"
+            android:gravity="center"
+            android:textColor="#0973DC"
             android:textSize="@dimen/_16ssp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/view" />
 
     </LinearLayout>

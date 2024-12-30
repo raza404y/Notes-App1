@@ -18,12 +18,9 @@ abstract class NoteDatabase : RoomDatabase(){
 
         fun createDatabase(context: Context):NoteDatabase{
             instance = Room.databaseBuilder(
-                context.applicationContext,
-                NoteDatabase::class.java,
-                "note_db"
+                context.applicationContext, NoteDatabase::class.java, "note_db"
             )
-                .allowMainThreadQueries()
-                .build()
+                .allowMainThreadQueries().build()
             return instance!!
         }
 
